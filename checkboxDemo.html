@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <script src="jquery-1.8.3/jquery.min.js"></script>
+</head>
+<body>
+<h3 class="mark">活动标签</h3>
+<div class="tag">
+    <label class="label"><input name="mark" type="checkbox" data-id="CA01" data-value="环境保护"/> 环境保护 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA02" data-value="文化艺术"/> 文化艺术 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA03" data-value="卫生健康"/> 卫生健康 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA04" data-value="科学技术"/> 科学技术 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA05" data-value="交通安全"/> 交通安全 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA06" data-value="社区服务"/> 社区服务 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA07" data-value="教育服务"/> 教育服务 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA08" data-value="尊老扶幼"/> 尊老扶幼 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA09" data-value="应急救援"/> 应急救援 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA10" data-value="扶贫助残"/> 扶贫助残 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA11" data-value="法律援助"/> 法律援助 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA12" data-value="服务三农"/> 服务三农 </label>
+    <label class="label"><input name="mark" type="checkbox" data-id="CA13" data-value="慈善救助"/> 慈善救助 </label>
+</div>
+<input type="button" class="sbm" id="sbm"  value="提交信息"/>
+<script>
+
+    $("#sbm").on("click", function () {
+        toJSONString("mark")
+    })
+
+    function toJSONString(checkname){
+        obj = document.getElementsByName(checkname);
+        check_val = {};
+        arr= [];
+        $('input[name="mark"]:checked').each(function (i,v) {
+            console.log(v);
+            var id = v.getAttribute("data-id")
+            console.log(v.getAttribute("data-id"));
+            var value = v.getAttribute("data-value")
+            console.log(v.getAttribute("data-value"));
+            check_val.id = id;
+            check_val.name =value;
+
+            var  check_valstr = JSON.stringify(check_val);
+            arr[i]=check_valstr
+
+        })
+        console.log(arr);
+        console.log(typeof arr);
+        console.log("---分割线-----");
+        var str3 = arr.toString()
+        console.log(str3);
+        console.log(typeof str3);
+        console.log("---分割线-----");
+        var str1 ="[";
+        var str2 ="]";
+        var str0 = str1.concat(str3,str2)
+        console.log(str0);
+        console.log(typeof str0);
+
+    }
+
+
+
+
+</script>
+</body>
+</html>
